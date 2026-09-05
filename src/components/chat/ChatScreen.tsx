@@ -21,7 +21,7 @@ interface ChatScreenProps {
 
 // Strip suggestions block from rendered message text
 function cleanMessageText(text: string): string {
-  return text.replace(/\[SUGGESTIONS:[\s\S]*?(\]|$)/i, "").trim();
+  return text.replace(/\[SUGGESTIONS:[\s\S]*?(\]|$)/gi, "").trim();
 }
 
 // Formatter for AI responses supporting bold (**text**) and bullet points (- item)
@@ -112,13 +112,33 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
 
     for (const part of [...lastAssistant.parts].reverse()) {
       if (part.type === "text" && part.text) {
-        const match = part.text.match(
-          /\[SUGGESTIONS:\s*([^|\]]+)\s*\|\s*([^\]]+)\]/i
-        );
+        // Robust extraction: matches [SUGGESTIONS: ... ] or unclosed [SUGGESTIONS: ...
+        const match =
+          part.text.match(/\[SUGGESTIONS:\s*([\s\S]*?)\]/i) ||
+          part.text.match(/\[SUGGESTIONS:\s*([^\n\r]+)/i);
+
         if (match) {
-          const s1 = match[1].trim().replace(/^["']|["']$/g, "").trim();
-          const s2 = match[2].trim().replace(/^["']|["']$/g, "").trim();
-          if (s1 && s2) return [s1, s2];
+          const rawContent = match[1];
+          // Split on pipe characters OR newlines
+          const items = rawContent
+            .split(/\s*\|\s*|\n+/)
+            .map((item) =>
+              item
+                .replace(/^[-*•\s"'`]+|["'`\s]+$/g, "")
+                .replace(/\|/g, "")
+                .replace(/\s+/g, " ")
+                .trim()
+            )
+            .filter(
+              (item) =>
+                item.length > 0 &&
+                !item.toLowerCase().startsWith("suggestion")
+            );
+
+          if (items.length > 0) {
+            // Stick to 2 suggestions
+            return items.slice(0, 2);
+          }
         }
       }
     }
@@ -260,12 +280,40 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
 
                     if (isSummaryTool) {
                       const p = part as any;
-                      const toolData = p.output || p.result || p.input;
+                      const toolOutput = p.output || p.result;
 
-                      // When data is available, render compact full-width card
+                      // If the tool execution returned an error (e.g. premature call rejected), suppress card
                       if (
-                        toolData &&
-                        (toolData.destination || toolData.referenceId)
+                        toolOutput?.error ||
+                        p.state === "output-error" ||
+                        p.errorText
+                      ) {
+                        const hasOtherContent = message.parts.some(
+                          (otherPart, otherIdx) =>
+                            otherIdx !== i &&
+                            ((otherPart.type === "text" &&
+                              otherPart.text.trim().length > 0) ||
+                              (otherPart as any).output?.destination)
+                        );
+                        if (hasOtherContent) {
+                          return null;
+                        }
+                        return (
+                          <div
+                            key={`${message.id}-${i}`}
+                            className="flex justify-start"
+                          >
+                            <div className="bg-amber-50 text-amber-800 px-3.5 py-2 rounded-xl text-xs border border-amber-200/80 font-medium">
+                              Reviewing itinerary details...
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      // When verified output data is available from server, render compact full-width card
+                      if (
+                        toolOutput &&
+                        (toolOutput.destination || toolOutput.referenceId)
                       ) {
                         return (
                           <div
@@ -274,40 +322,26 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
                           >
                             <ItineraryCard
                               referenceId={
-                                toolData.referenceId || "SYA-PREVIEW"
+                                toolOutput.referenceId || "SYA-PREVIEW"
                               }
                               destination={
-                                toolData.destination || "Bespoke Getaway"
+                                toolOutput.destination || "Bespoke Getaway"
                               }
-                              departureCity={toolData.departureCity}
-                              travelers={toolData.travelers}
-                              partySize={Number(toolData.partySize) || 2}
-                              budget={toolData.budget || "Luxury Tier"}
-                              timeOfTrip={toolData.timeOfTrip}
-                              duration={toolData.duration || "Custom Dates"}
-                              vibe={toolData.vibe || "Curated Experience"}
-                              email={toolData.email}
-                              phone={toolData.phone}
+                              departureCity={toolOutput.departureCity}
+                              travelers={toolOutput.travelers}
+                              partySize={Number(toolOutput.partySize) || 2}
+                              budget={toolOutput.budget || "Luxury Tier"}
+                              timeOfTrip={toolOutput.timeOfTrip}
+                              duration={toolOutput.duration || "Custom Dates"}
+                              vibe={toolOutput.vibe || "Curated Experience"}
+                              email={toolOutput.email}
+                              phone={toolOutput.phone}
                             />
                           </div>
                         );
                       }
 
-                      // Error fallback
-                      if (p.state === "output-error" || p.errorText) {
-                        return (
-                          <div
-                            key={`${message.id}-${i}`}
-                            className="flex justify-start"
-                          >
-                            <div className="bg-amber-50 text-amber-800 px-3.5 py-2 rounded-xl text-xs border border-amber-200/80 font-medium">
-                              Unable to generate itinerary summary. Reviewing details...
-                            </div>
-                          </div>
-                        );
-                      }
-
-                      // Preparing state
+                      // Preparing state while server executes
                       return (
                         <div
                           key={`${message.id}-${i}`}
