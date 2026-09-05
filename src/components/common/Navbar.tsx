@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({ onStartPlanning }: { onStartPlanning?: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,7 +22,10 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <button className="bg-gradient-to-r from-[var(--coral-glow)] to-[var(--salmon)] text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all">
+          <button
+            onClick={onStartPlanning}
+            className="bg-gradient-to-r from-[var(--coral-glow)] to-[var(--salmon)] text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all cursor-pointer"
+          >
             Start Planning
           </button>
         </div>
@@ -45,7 +48,13 @@ export default function Navbar() {
             <a href="#destinations" onClick={() => setIsOpen(false)} className="font-semibold text-lg hover:text-[var(--coral-glow)]">Destinations</a>
             <a href="#how-it-works" onClick={() => setIsOpen(false)} className="font-semibold text-lg hover:text-[var(--coral-glow)]">How it Works</a>
             <a href="#faq-section" onClick={() => setIsOpen(false)} className="font-semibold text-lg hover:text-[var(--coral-glow)]">FAQ</a>
-            <button className="bg-[var(--coral-glow)] text-white px-6 py-3 rounded-full font-semibold mt-4">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                onStartPlanning?.();
+              }}
+              className="bg-[var(--coral-glow)] text-white px-6 py-3 rounded-full font-semibold mt-4 cursor-pointer"
+            >
               Start Planning
             </button>
           </motion.div>

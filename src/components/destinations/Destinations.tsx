@@ -26,7 +26,7 @@ export default function Destinations() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={cn(
-                  "px-6 py-2.5 rounded-full font-medium transition-all whitespace-nowrap",
+                  "px-3.5 sm:px-6 py-2.5 rounded-full font-medium transition-all whitespace-nowrap",
                   activeTab === tab 
                     ? "bg-[var(--coral-glow)] text-white shadow-md" 
                     : "text-gray-500 hover:text-[var(--vintage-grape)] hover:bg-gray-50"

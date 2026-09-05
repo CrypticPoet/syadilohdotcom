@@ -9,7 +9,7 @@ export default function DestinationCard({ dest }: { dest: { id: number, name: st
 
   return (
     <motion.div 
-      className="relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer group"
+      className="relative rounded-3xl overflow-hidden aspect-[10/9] cursor-pointer group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -5 }}
