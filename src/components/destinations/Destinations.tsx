@@ -12,7 +12,7 @@ export default function Destinations() {
   return (
     <section id="destinations" className="py-16 relative w-full overflow-hidden">
       {/* Background Accents */}
-      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[var(--soft-periwinkle)]/20 blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[var(--soft-periwinkle)]/20 blur-[80px] -z-10 pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[35vw] h-[35vw] rounded-full bg-[var(--salmon)]/10 blur-[100px] -z-10 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">

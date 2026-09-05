@@ -39,10 +39,14 @@ export default function Hero() {
   }, [displayText, isTyping, promptIndex]);
 
   return (
-    <section className="relative pt-32 pb-14 md:pt-48 md:pb-24 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-      {/* Background Gradients */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[var(--soft-periwinkle)]/30 blur-[100px] -z-10" />
-      <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[var(--salmon)]/20 blur-[120px] -z-10" />
+    <section className="relative pt-32 pb-14 md:pt-48 md:pb-24 px-4 md:px-8 w-full min-h-[100svh] flex flex-col justify-center overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 w-full">
+      {/* Blurred Tropical Background */}
+      <div className="absolute inset-0 -z-20">
+        <div className="absolute inset-[-10%] bg-[url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop')] bg-cover bg-center blur-[4px] scale-105" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--soft-periwinkle)]/40 to-transparent mix-blend-color -z-10" />
+      <div className="absolute inset-0 bg-white/50 -z-10" />
 
       {/* Left Column */}
       <div className="flex-1 flex flex-col gap-6 z-10 w-full">
@@ -127,6 +131,7 @@ export default function Hero() {
         >
           Give shape to the trip of your dreams, travel like an emperor.
         </motion.div>
+      </div>
       </div>
     </section>
   );
