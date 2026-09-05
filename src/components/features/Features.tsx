@@ -5,7 +5,7 @@ import { FEATURES, MARQUEE_ITEMS } from "@/lib/data";
 
 export default function Features() {
   return (
-    <section className="py-14 flex flex-col justify-between gap-12 overflow-hidden relative">
+    <section className="py-14 flex flex-col justify-between gap-12 relative">
       {/* Background Accents */}
       <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[var(--soft-periwinkle)]/20 blur-[60px] -z-10 pointer-events-none" />
       <div className="absolute bottom-[40%] left-[-10%] w-[30vw] h-[30vw] rounded-full bg-[var(--vintage-grape)]/10 blur-[60px] -z-10 pointer-events-none" />
