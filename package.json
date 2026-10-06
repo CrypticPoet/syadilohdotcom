@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "travel": "tsx --env-file-if-exists=.env scripts/travel.ts",
+    "travel:images": "tsx scripts/fetch-travel-images.ts",
+    "travel:snapshot": "tsx scripts/build-travel-snapshot.ts",
+    "travel:verify": "tsx --env-file-if-exists=.env scripts/verify-travel.ts",
+    "test:travel": "tsx --test tests/travel.test.ts",
+    "test:travel:integration": "tsx --env-file-if-exists=.env --test tests/travel.integration.test.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.64",
@@ -33,6 +39,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "tsx": "^4.23.13"
   }
 }

@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q36433": {
+      "id": "Q36433",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Porto"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "d32358601bb54d4c9d8df4a4748c7604eb624a31",
+              "datavalue": {
+                "value": {
+                  "latitude": 41.15,
+                  "longitude": -8.610833333333334,
+                  "altitude": null,
+                  "precision": 0.0002777777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q36433$5B7B5567-34FC-4827-A323-5758F7EA544E",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "ba41847453a00d1eb2a1662586e7eff9cf6e6695",
+              "datavalue": {
+                "value": "6458924",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q36433$605813BC-4A9C-4942-B1FE-C549D2613879",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

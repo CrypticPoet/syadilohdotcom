@@ -1,0 +1,127 @@
+{
+  "entities": {
+    "Q33959": {
+      "id": "Q33959",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Nice"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "fdf1a619d76e99f17ea0fed270c4913ba10df034",
+              "datavalue": {
+                "value": {
+                  "latitude": 43.701944444444,
+                  "longitude": 7.2683333333333,
+                  "altitude": null,
+                  "precision": 0.00027777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q33959$D4B2E0C6-5614-4916-B6B2-F3F433FC5B7E",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "72bd649cff6312781343b6d77df48cd08779d709",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "f747cc5a0b0d9b332032ebdd0bc6d90838ea13f8",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 20894925,
+                          "id": "Q20894925"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "ff3b4928f50df025966fab92e3ab5fa610286590",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-10-26T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "63b5254d7b4f4bab6b8917899e73db638b0e198a",
+              "datavalue": {
+                "value": "2990440",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q33959$FB429ACA-7251-420C-A3EC-A75E3671413A",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "88694a0f4d1486770c269f7db16a1982f74da69d",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "1b3ef912a2bd61e18dd43abd184337eb010b2e96",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 830106,
+                          "id": "Q830106"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

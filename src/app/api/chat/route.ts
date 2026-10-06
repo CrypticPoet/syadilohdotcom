@@ -12,6 +12,7 @@ import { z } from "zod";
 import { customAlphabet } from "nanoid";
 import { db } from "@/lib/db/client";
 import { enquiries } from "@/lib/db/schema";
+import { getPage } from "@/lib/travel/repository";
 
 const generateRefId = customAlphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6);
 
@@ -55,11 +56,28 @@ function cleanAndValidatePhone(phone?: string | null): string | null {
 }
 
 export async function POST(req: Request) {
-  const { messages }: { messages: UIMessage[] } = await req.json();
+  const { messages, guidePath }: { messages: UIMessage[]; guidePath?: unknown } = await req.json();
+  let guideContext = "";
+  let sourcePath: string | undefined;
+  if (guidePath !== undefined) {
+    const parsed = z.string().max(200).regex(/^\/holidays$|^\/(holidays|itineraries)\/[a-z0-9-]+(?:\/[a-z0-9-]+)*$/).safeParse(guidePath);
+    if (!parsed.success) return Response.json({ error: "Invalid travel guide" }, { status: 400 });
+    sourcePath = parsed.data;
+    if (sourcePath !== "/holidays") {
+      const guide = await getPage(sourcePath);
+      if (!guide) return Response.json({ error: "Travel guide not found" }, { status: 404 });
+      const { destination, type, days } = guide.content;
+      guideContext = `The visitor is reading our published ${type} guide for ${destination.name}, ${destination.country}. ${days ? `The guide suggests ${days} days.` : ""}
+Use this destination as the initial planning context unless the visitor changes it. Our guides target UK travellers: prioritise UK airports in departure suggestions and GBP in budget suggestions, but ask for and respect their actual departure and currency. The guide's theme and suggested duration are inspiration, not confirmed requirements. Never infer party size, dates, departure airport or budget from the guide. Ask for missing requirements, one at a time, and do not re-ask for the destination if their prompt already names it. Prices and availability require an agent's quote. This is an itinerary request, not a confirmed booking.`;
+    }
+  }
+  const attribution = sourcePath ? { source: "travel-guide-chat", sourcePath } : {};
 
   const result = streamText({
     model: google("gemini-3.5-flash-lite"),
-    system: `You are a luxury travel concierge for Syadiloh. Your mission is to deliver an inspiring, personalized discovery experience, collect the traveler's exact trip requirements, present a complete trip summary for their review, and confirm their bespoke luxury itinerary.
+    system: `${guideContext}
+
+You are a luxury travel concierge for Syadiloh. Your mission is to deliver an inspiring, personalized discovery experience, collect the traveler's exact trip requirements, present a complete trip summary for their review, and confirm their bespoke luxury itinerary.
 
 ======================================================================
 CORE OPERATING PRINCIPLES: DYNAMIC CONTEXT AWARENESS & ZERO HALLUCINATION
@@ -257,10 +275,10 @@ Follow this exact sequence:
               if (Array.isArray(m.parts)) {
                 return m.parts
                   .filter((p) => p.type === "text")
-                  .map((p) => (p as any).text || "")
+                  .map((p) => p.type === "text" ? p.text : "")
                   .join(" ");
               }
-              return (m as any).content || "";
+              return "";
             })
             .join(" ");
 
@@ -295,6 +313,7 @@ Follow this exact sequence:
                   email,
                   phone: validatedPhone,
                   tripDetails: {
+                  ...attribution,
                     destination,
                     vibe,
                     departureCity,
@@ -314,6 +333,7 @@ Follow this exact sequence:
                     email,
                     phone: validatedPhone,
                     tripDetails: {
+                      ...attribution,
                       destination,
                       vibe,
                       departureCity,
@@ -430,6 +450,7 @@ Follow this exact sequence:
                 email,
                 phone: validatedPhone,
                 tripDetails: {
+                  ...attribution,
                   destination,
                   vibe,
                   departureCity,
@@ -449,6 +470,7 @@ Follow this exact sequence:
                   email,
                   phone: validatedPhone,
                   tripDetails: {
+                  ...attribution,
                     destination,
                     vibe,
                     departureCity,

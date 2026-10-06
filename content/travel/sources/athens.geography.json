@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q1524": {
+      "id": "Q1524",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Athens"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "9b1f33e3a78cb551297c646bad925f14a4e76f57",
+              "datavalue": {
+                "value": {
+                  "latitude": 37.98416666666667,
+                  "longitude": 23.728055555555557,
+                  "altitude": null,
+                  "precision": 0.0002777777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q1524$B1A5A94F-DBDE-4327-993F-9EDCBE6F27C3",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "cbe4a889fb0dfbb2521b647ce27a69ad22e79d28",
+              "datavalue": {
+                "value": "264371",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q1524$4657DDCC-0CFC-48F1-8B6A-5D78AC54893A",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

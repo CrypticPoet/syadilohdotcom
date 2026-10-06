@@ -1,13 +1,16 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { DESTINATIONS } from "@/lib/data";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import type { PageSummary } from "@/lib/travel/types";
 import { cn } from "@/lib/utils";
 import DestinationCard from "./DestinationCard";
 
-export default function Destinations() {
-  const [activeTab, setActiveTab] = useState<keyof typeof DESTINATIONS>("North America");
-  const tabs: (keyof typeof DESTINATIONS)[] = ["North America", "Europe", "Asia", "Africa"];
+export default function Destinations({ destinations }: { destinations: PageSummary[] }) {
+  const [activeTab, setActiveTab] = useState("all");
+  const tabs = ["all", ...new Set(destinations.map(d => d.country))];
+  const visible = destinations.filter(d => activeTab === "all" || d.country === activeTab).slice(0, 8);
 
   return (
     <section id="destinations" className="py-16 relative w-full">
@@ -17,14 +20,15 @@ export default function Destinations() {
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Where users are travelling to</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Find your next destination</h2>
           
           {/* Pill Tabs */}
           <div className="inline-flex bg-white p-2 rounded-full shadow-md overflow-x-auto max-w-full">
             {tabs.map((tab) => (
               <button
-                key={tab}
+                key={tab === "all" ? "All destinations" : tab.charAt(0).toUpperCase() + tab.slice(1)}
                 onClick={() => setActiveTab(tab)}
+                aria-pressed={activeTab === tab}
                 className={cn(
                   "px-3.5 sm:px-6 py-2.5 rounded-full font-medium transition-all whitespace-nowrap",
                   activeTab === tab 
@@ -32,7 +36,7 @@ export default function Destinations() {
                     : "text-gray-500 hover:text-[var(--vintage-grape)] hover:bg-gray-50"
                 )}
               >
-                {tab}
+                {tab === "all" ? "All destinations" : tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
             ))}
           </div>
@@ -46,10 +50,15 @@ export default function Destinations() {
           transition={{ duration: 0.4 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {DESTINATIONS[activeTab].map((dest) => (
-            <DestinationCard key={dest.id} dest={dest} />
+          {visible.map((dest) => (
+            <DestinationCard key={dest.path} dest={dest} />
           ))}
         </motion.div>
+        <div className="mt-10 text-center">
+          <Link href="/holidays" className="inline-flex items-center gap-2 rounded-full bg-[var(--coral-glow)] px-6 py-3.5 font-semibold text-white shadow-sm transition hover:bg-[var(--salmon)]">
+            Explore other options <ArrowUpRight size={18} />
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q38": {
+      "id": "Q38",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Italy"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "aa12a98e72d4eddd58b73387b075adc4e15df61f",
+              "datavalue": {
+                "value": {
+                  "latitude": 42.5,
+                  "longitude": 12.5,
+                  "altitude": null,
+                  "precision": 0.1,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q38$6be5dd88-4e91-89b3-92d4-2cc199659ce7",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "0ab6710c44685480e17f2cab947d7d091e544498",
+              "datavalue": {
+                "value": "3175395",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q38$48B1A9CE-AD06-4C48-A46F-B18C8D8F5D11",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

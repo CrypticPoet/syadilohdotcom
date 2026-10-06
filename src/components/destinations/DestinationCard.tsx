@@ -1,74 +1,24 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Sun, CloudRain } from "lucide-react";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowUpRight, MapPin } from "lucide-react";
+import type { PageSummary } from "@/lib/travel/types";
 
-export default function DestinationCard({ dest }: { dest: { id: number, name: string, image: string, desc: string, q1: string, q2: string, q3: string, q4: string } }) {
-  const [isHovered, setIsHovered] = useState(false);
-
+export default function DestinationCard({ dest }: { dest: PageSummary }) {
   return (
-    <motion.div 
-      className="relative rounded-3xl overflow-hidden aspect-[10/9] cursor-pointer group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ y: -5 }}
-    >
-      <img 
-        src={dest.image} 
-        alt={dest.name} 
-        className={cn(
-          "w-full h-full object-cover transition-all duration-500",
-          isHovered ? "scale-110 blur-sm brightness-50" : "scale-100 blur-0 brightness-100"
-        )}
-      />
-      
-      {/* Default State */}
-      <div className={cn(
-        "absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300",
-        isHovered ? "opacity-0" : "opacity-100"
-      )}>
-        <div className="absolute bottom-4 left-4 right-4 text-white">
-          <div className="flex items-center gap-2 mb-1 opacity-80">
-            <MapPin size={14} />
-            <span className="text-xs font-medium">{dest.name.split(',')[1]}</span>
-          </div>
-          <h3 className="text-xl font-heading font-semibold">{dest.name.split(',')[0]}</h3>
-          <p className="text-xs text-white/80 mt-1 line-clamp-1">{dest.desc}</p>
+    <motion.div whileHover={{ y: -5 }}>
+      <Link href={dest.path} className="relative block overflow-hidden rounded-3xl aspect-[10/9] group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--coral-glow)]">
+        <Image src={dest.image.url} alt={dest.image.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105 group-focus-visible:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
+        <div className="absolute bottom-5 left-5 right-5 text-white">
+          <p className="mb-1 flex items-center gap-2 text-xs font-medium capitalize text-white/80"><MapPin size={14} />{dest.country}</p>
+          <h3 className="font-heading text-2xl font-semibold">{dest.name}</h3>
+          <p className="mt-2 line-clamp-2 text-sm text-white/85">{dest.description}</p>
+          <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">Explore {dest.name}<ArrowUpRight size={16} /></span>
         </div>
-      </div>
-
-      {/* Hover State - Weather Data */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 5 }}
-            className="absolute inset-0 p-4 flex flex-col justify-center text-white bg-black/40 backdrop-blur-md"
-          >
-            <h3 className="text-lg font-heading font-semibold mb-3 text-center">{dest.name}</h3>
-            <div className="space-y-2">
-              {[
-                { q: "Jan-Mar", data: dest.q1 },
-                { q: "Apr-Jun", data: dest.q2 },
-                { q: "Jul-Sep", data: dest.q3 },
-                { q: "Oct-Dec", data: dest.q4 },
-              ].map((quarter, i) => (
-                <div key={i} className="bg-white/20 rounded-xl p-2 px-3 flex items-center justify-between backdrop-blur-lg border border-white/10">
-                  <span className="text-xs font-medium text-white/90">{quarter.q}</span>
-                  <div className="flex items-center gap-2 text-xs font-semibold">
-                    <span className="flex items-center gap-1"><Sun size={12} className="text-yellow-300"/> {quarter.data.split(' / ')[0]}</span>
-                    <span className="text-white/40">|</span>
-                    <span className="flex items-center gap-1"><CloudRain size={12} className="text-blue-300"/> {quarter.data.split(' / ')[1]}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </Link>
+      <p className="mt-2 px-1 text-[10px] leading-relaxed text-[var(--vintage-grape)]/55"><a href={dest.image.creditUrl} className="underline underline-offset-2">{dest.image.credit} · {dest.image.licence}</a></p>
     </motion.div>
   );
 }
-

@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "Q1492": {
+      "id": "Q1492",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Barcelona"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "b0eb3466ba0a9108e77502f21b15b1b4a4a2e5ab",
+              "datavalue": {
+                "value": {
+                  "latitude": 41.3825,
+                  "longitude": 2.1769444444444,
+                  "altitude": null,
+                  "precision": 0.00027777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q1492$553FCE4D-6E79-48F2-8ECF-333426DF4A36",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 8449,
+                          "id": "Q8449"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "ee935f48ef82a23ab0c6e0af4bb25b2d58ffb1c9",
+              "datavalue": {
+                "value": "6356055",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q1492$98160CBE-52EF-44A0-AE1B-663C04D14FC4",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

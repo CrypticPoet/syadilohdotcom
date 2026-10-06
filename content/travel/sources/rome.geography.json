@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q220": {
+      "id": "Q220",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Rome"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "404d6e1968861548b2443af90881accb0ab95399",
+              "datavalue": {
+                "value": {
+                  "latitude": 41.893055555556,
+                  "longitude": 12.482777777778,
+                  "altitude": null,
+                  "precision": 0.00027777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q220$8CA1C970-033E-4D0B-8045-168003421A8D",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "a00273106bfc0c8316391fc08094bb83ef01d295",
+              "datavalue": {
+                "value": "3169070",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q220$EC2FEB79-DD01-4665-A32C-132846F5A0FA",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

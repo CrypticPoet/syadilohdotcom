@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -15,7 +16,7 @@ export default function Navbar({ onStartPlanning }: { onStartPlanning?: () => vo
         
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 font-medium">
-          <a href="#destinations" className="hover:text-[var(--coral-glow)] transition-colors">Destinations</a>
+          <Link href="/holidays" className="hover:text-[var(--coral-glow)] transition-colors">Destinations</Link>
           <a href="#how-it-works" className="hover:text-[var(--coral-glow)] transition-colors">How it Works</a>
           <a href="#faq-section" className="hover:text-[var(--coral-glow)] transition-colors">FAQ</a>
         </div>
@@ -45,7 +46,7 @@ export default function Navbar({ onStartPlanning }: { onStartPlanning?: () => vo
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-xl border border-white/20 rounded-3xl p-6 flex flex-col gap-4 shadow-xl"
           >
-            <a href="#destinations" onClick={() => setIsOpen(false)} className="font-semibold text-lg hover:text-[var(--coral-glow)]">Destinations</a>
+            <Link href="/holidays" onClick={() => setIsOpen(false)} className="font-semibold text-lg hover:text-[var(--coral-glow)]">Destinations</Link>
             <a href="#how-it-works" onClick={() => setIsOpen(false)} className="font-semibold text-lg hover:text-[var(--coral-glow)]">How it Works</a>
             <a href="#faq-section" onClick={() => setIsOpen(false)} className="font-semibold text-lg hover:text-[var(--coral-glow)]">FAQ</a>
             <button

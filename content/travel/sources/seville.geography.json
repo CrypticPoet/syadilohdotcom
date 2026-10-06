@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "Q8717": {
+      "id": "Q8717",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Seville"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "8e48d555c7fb30ac1993203dab71d6c5db88d56c",
+              "datavalue": {
+                "value": {
+                  "latitude": 37.38861111111111,
+                  "longitude": -5.995,
+                  "altitude": null,
+                  "precision": 0.0002777777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q8717$C1E2D35E-91BC-4EC8-B5AC-DE16C5BEEDD3",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 328,
+                          "id": "Q328"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "29875ccbe4661d361667e1a8c4ca1f132ae63f54",
+              "datavalue": {
+                "value": "6361046",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q8717$82EAEB2F-2E84-4A1C-9166-59D8A5B59BE6",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

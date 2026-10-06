@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "Q641": {
+      "id": "Q641",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Venice"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "c4d411c95a306a4f8d36412e69eacdab0d1734c9",
+              "datavalue": {
+                "value": {
+                  "latitude": 45.439722222222,
+                  "longitude": 12.331944444444,
+                  "altitude": null,
+                  "precision": 0.00027777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q641$B1783BE8-6F07-424D-85DA-EC4FD20ACF8A",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "5a343e7e758a4282a01316d3e959b6e653b767fc",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 11920,
+                          "id": "Q11920"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "d7bfd4d31aaeb7b50d913949d6bcd6ae6f97d125",
+              "datavalue": {
+                "value": "6542284",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q641$33ECC94C-AFAB-41F9-B204-2112FA9B14E7",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Paperclip,
@@ -16,7 +18,34 @@ import ItineraryCard from "@/components/hero/ItineraryCard";
 
 interface ChatScreenProps {
   initialQuery?: string;
-  onExit: () => void;
+  onExit?: () => void;
+  exitLabel?: string;
+  embedded?: boolean;
+  sourcePath?: string;
+  initialSuggestions?: string[];
+  welcomeMessage?: string;
+}
+
+interface TripToolPart {
+  toolName?: string;
+  state?: string;
+  errorText?: string;
+  output?: TripToolOutput;
+  result?: TripToolOutput;
+}
+interface TripToolOutput {
+  error?: string;
+  referenceId?: string;
+  destination?: string;
+  departureCity?: string;
+  travelers?: string;
+  partySize?: number;
+  budget?: string;
+  timeOfTrip?: string;
+  duration?: string;
+  vibe?: string;
+  email?: string;
+  phone?: string;
 }
 
 // Strip suggestions block from rendered message text
@@ -38,9 +67,10 @@ function FormattedText({ text }: { text: string }) {
           line.trim().startsWith("- ") ||
           line.trim().startsWith("* ") ||
           line.trim().startsWith("• ");
-        const content = isBullet ? line.trim().replace(/^[-*•]\s+/, "") : line;
+        const isHeading = /^#{1,6}\s+/.test(line.trim());
+        const content = isBullet ? line.trim().replace(/^[-*•]\s+/, "") : line.replace(/^#{1,6}\s+/, "");
 
-        const parts = content.split(/(\*\*.*?\*\*)/g);
+        const parts = content.split(/(\*\*.*?\*\*|\*[^*]+\*)/g);
 
         const renderedLine = parts.map((part, pIdx) => {
           if (part.startsWith("**") && part.endsWith("**")) {
@@ -53,6 +83,7 @@ function FormattedText({ text }: { text: string }) {
               </strong>
             );
           }
+          if (part.startsWith("*") && part.endsWith("*")) return <em key={pIdx}>{part.slice(1, -1)}</em>;
           return <span key={pIdx}>{part}</span>;
         });
 
@@ -67,15 +98,17 @@ function FormattedText({ text }: { text: string }) {
           );
         }
 
-        return <p key={lIdx}>{renderedLine}</p>;
+        return <p key={lIdx} className={isHeading ? "pt-2 font-semibold" : undefined}>{renderedLine}</p>;
       })}
     </div>
   );
 }
 
-export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
+export default function ChatScreen({ initialQuery, onExit, exitLabel = "Back to Home", embedded = false, sourcePath, initialSuggestions, welcomeMessage }: ChatScreenProps) {
+  const router = useRouter();
   const [input, setInput] = useState("");
-  const { messages, sendMessage, status, setMessages } = useChat();
+  const transport = useMemo(() => new DefaultChatTransport({ body: sourcePath ? { guidePath: sourcePath } : {} }), [sourcePath]);
+  const { messages, sendMessage, status, setMessages, error, clearError, regenerate } = useChat({ id: sourcePath || "syadiloh-home-chat", transport });
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const initialSentRef = useRef(false);
@@ -99,7 +132,7 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
   // Extract quick reply suggestions from the latest assistant message
   const suggestions = useMemo(() => {
     if (messages.length === 0) {
-      return [
+      return initialSuggestions || [
         "Help me discover a destination 🌴",
         "I have a destination in mind ✈️",
       ];
@@ -144,12 +177,13 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
     }
 
     return [];
-  }, [messages]);
+  }, [messages, initialSuggestions]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const query = input.trim();
-    if (!query) return;
+    if (!query || status === "submitted" || status === "streaming") return;
+    clearError();
 
     sendMessage({ text: query });
     setInput("");
@@ -161,17 +195,20 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
   const handleSuggestionClick = (suggestion: string) => {
     if (status === "submitted" || status === "streaming") return;
     if (suggestion.toLowerCase().includes("back to home")) {
-      onExit();
+      if (onExit) onExit();
+      else router.push("/");
       return;
     }
     if (suggestion.toLowerCase().includes("plan another trip")) {
       handleResetChat();
       return;
     }
+    clearError();
     sendMessage({ text: suggestion });
   };
 
   const handleResetChat = () => {
+    clearError();
     setMessages([]);
     setInput("");
   };
@@ -179,7 +216,8 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
   const isStreaming = status === "submitted" || status === "streaming";
 
   return (
-    <div className="h-dvh w-full overflow-hidden flex flex-col relative select-none">
+    <div className={embedded ? "h-[480px] sm:h-[580px] w-full flex flex-col relative" : "h-dvh w-full overflow-hidden flex flex-col relative select-none"}>
+      {!embedded && <>
       {/* Exact Tropical Location Hero Background */}
       <div className="absolute inset-0 -z-20 overflow-hidden pointer-events-none">
         <div className="absolute inset-[-10%] bg-[url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop')] bg-cover bg-center blur-[4px] scale-105" />
@@ -189,25 +227,27 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
 
       {/* Main Navbar at top */}
       <Navbar onStartPlanning={() => {}} />
+      </>}
 
       {/* Chat Sub-Navigation & Reduced-Width Container */}
-      <div className="pt-20 sm:pt-24 pb-3 sm:pb-5 px-3 sm:px-4 max-w-2xl md:max-w-4xl w-full mx-auto flex-1 flex flex-col min-h-0 z-10">
+      <div className={embedded ? "w-full flex-1 flex flex-col min-h-0" : "pt-20 sm:pt-24 pb-3 sm:pb-5 px-3 sm:px-4 max-w-2xl md:max-w-4xl w-full mx-auto flex-1 flex flex-col min-h-0 z-10"}>
         {/* Equal-Sized Top Buttons: Back to Home & New Chat */}
-        <div className="flex items-center justify-between my-4 px-1 gap-2">
-          <button
+        <div className={embedded ? "flex justify-end mb-3" : "flex items-center justify-between my-4 px-1 gap-2"}>
+          {!embedded && <button
             onClick={onExit}
             className="group flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/90 hover:bg-white text-[var(--vintage-grape)] shadow-sm border border-gray-200/80 font-semibold text-xs sm:text-sm transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md shrink-0"
-            title="Return to homepage"
+            title={exitLabel}
           >
             <ArrowLeft
               size={15}
               className="group-hover:-translate-x-0.5 transition-transform text-[var(--coral-glow)] shrink-0"
             />
-            <span>Back to Home</span>
-          </button>
+            <span>{exitLabel}</span>
+          </button>}
 
           <button
             onClick={handleResetChat}
+            disabled={isStreaming}
             className="group flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/90 hover:bg-white text-[var(--vintage-grape)] shadow-sm border border-gray-200/80 font-semibold text-xs sm:text-sm transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md shrink-0"
             title="Start fresh conversation"
           >
@@ -235,7 +275,7 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
             {messages.length === 0 && (
               <div className="flex justify-start">
                 <div className="max-w-[90%] sm:max-w-[80%] px-4 sm:px-5 py-3 rounded-2xl rounded-bl-sm text-sm sm:text-base leading-relaxed bg-white text-[var(--vintage-grape)] border border-gray-200/80 shadow-sm font-medium">
-                  Welcome to Syadiloh. ✨ Tell me what you&apos;re dreaming of, or let me help you discover the ultimate destination!
+                  {welcomeMessage || "Welcome to Syadiloh. ✨ Tell me what you’re dreaming of, or let me help you discover the ultimate destination!"}
                 </div>
               </div>
             )}
@@ -275,11 +315,11 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
                     const isSummaryTool =
                       part.type === "tool-showTripSummary" ||
                       (part.type === "dynamic-tool" &&
-                        (part as any).toolName === "showTripSummary") ||
-                      (part as any).toolName === "showTripSummary";
+                        (part as TripToolPart).toolName === "showTripSummary") ||
+                      (part as TripToolPart).toolName === "showTripSummary";
 
                     if (isSummaryTool) {
-                      const p = part as any;
+                      const p = part as TripToolPart;
                       const toolOutput = p.output || p.result;
 
                       // If the tool execution returned an error (e.g. premature call rejected), suppress card
@@ -293,7 +333,7 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
                             otherIdx !== i &&
                             ((otherPart.type === "text" &&
                               otherPart.text.trim().length > 0) ||
-                              (otherPart as any).output?.destination)
+                              (otherPart as TripToolPart).output?.destination)
                         );
                         if (hasOtherContent) {
                           return null;
@@ -362,11 +402,11 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
                     const isSaveTripTool =
                       part.type === "tool-saveTripEnquiry" ||
                       (part.type === "dynamic-tool" &&
-                        (part as any).toolName === "saveTripEnquiry") ||
-                      (part as any).toolName === "saveTripEnquiry";
+                        (part as TripToolPart).toolName === "saveTripEnquiry") ||
+                      (part as TripToolPart).toolName === "saveTripEnquiry";
 
                     if (isSaveTripTool) {
-                      const p = part as any;
+                      const p = part as TripToolPart;
                       // While saving, show loading indicator
                       if (!p.output && !p.result && p.state !== "output-available") {
                         return (
@@ -379,7 +419,7 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
                                 size={14}
                                 className="animate-spin text-[var(--coral-glow)]"
                               />
-                              <span>Confirming and saving your booking...</span>
+                              <span>Saving your itinerary request...</span>
                             </div>
                           </div>
                         );
@@ -409,6 +449,11 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
                 </div>
               )}
           </div>
+
+          {error && <div role="alert" className="mx-4 my-2 rounded-xl bg-rose-50 p-3 text-sm text-rose-800">
+            We couldn’t get a reply. Please try again.
+            <button type="button" onClick={() => { clearError(); regenerate(); }} className="ml-2 font-semibold underline">Retry</button>
+          </div>}
 
           {/* Quick Reply Suggestions (Appears Just Above Text Box) */}
           <AnimatePresence>
@@ -445,6 +490,8 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
           >
             <textarea
               ref={textareaRef}
+              aria-label="Message our travel concierge"
+              disabled={isStreaming}
               className="flex-1 bg-transparent resize-none outline-none text-sm sm:text-base text-[var(--vintage-grape)] min-h-[38px] max-h-[100px] py-1.5 sm:py-2 px-2.5 sm:px-3 placeholder:text-gray-400 leading-relaxed font-sans"
               placeholder="Reply to concierge..."
               rows={1}
@@ -463,7 +510,7 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
               }}
             />
             <div className="flex items-center gap-1 shrink-0 pb-0.5">
-              <button
+              {!embedded && <><button
                 type="button"
                 className="p-2 text-gray-400 hover:text-[var(--coral-glow)] transition-colors rounded-full hover:bg-gray-50 cursor-pointer min-w-[36px] min-h-[36px] flex items-center justify-center"
                 title="Attach details"
@@ -476,9 +523,10 @@ export default function ChatScreen({ initialQuery, onExit }: ChatScreenProps) {
                 title="Voice input"
               >
                 <Mic size={17} />
-              </button>
+              </button></>}
               <button
                 type="submit"
+                aria-label="Send message"
                 disabled={isStreaming || !input.trim()}
                 className="bg-gradient-to-r from-[var(--coral-glow)] to-[var(--salmon)] text-white p-2 sm:p-2.5 rounded-full hover:scale-105 active:scale-95 transition-all shadow-md ml-0.5 disabled:opacity-50 disabled:hover:scale-100 cursor-pointer disabled:cursor-not-allowed min-w-[36px] min-h-[36px] flex items-center justify-center"
               >

@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q45": {
+      "id": "Q45",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Portugal"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "453d4df453175058874921a95e4d0fc6807e55f9",
+              "datavalue": {
+                "value": {
+                  "latitude": 38.7,
+                  "longitude": -9.183333333333334,
+                  "altitude": null,
+                  "precision": 1,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q45$40401455-C1C4-4FFD-A9E1-152E4DD73313",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "7099b9e1b243625baf7312827352908fc2ed237c",
+              "datavalue": {
+                "value": "2264397",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q45$8302D0BE-CB23-4B01-9DF9-7C5F806360EA",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

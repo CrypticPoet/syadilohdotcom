@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "Q41": {
+      "id": "Q41",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Greece"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "7ab794cc58829d5fc981d0be1d3f79ac31582ebb",
+              "datavalue": {
+                "value": {
+                  "latitude": 38.5,
+                  "longitude": 23,
+                  "altitude": null,
+                  "precision": 0.1,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P144": [
+                {
+                  "snaktype": "value",
+                  "property": "P144",
+                  "hash": "2eb5d2499def5acd99b5431af4de1de569cd9594",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 19826574,
+                      "id": "Q19826574"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P144"
+            ],
+            "id": "Q41$218f3746-40a6-6fc9-d464-d2f1fc600f37",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "bb7bb7a02119767c17c6d3fa4e04beca9e48ab27",
+              "datavalue": {
+                "value": "390903",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q41$C306B7DA-34A0-48BC-811D-423F35D31001",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

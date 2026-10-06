@@ -1,0 +1,95 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      19.87,
+      39.6,
+      69.96
+    ]
+  },
+  "properties": {
+    "parameter": {
+      "CLOUD_AMT": {
+        "JAN": 70.01,
+        "FEB": 68,
+        "MAR": 62.16,
+        "APR": 57.1,
+        "MAY": 47.82,
+        "JUN": 33.17,
+        "JUL": 22.42,
+        "AUG": 22.76,
+        "SEP": 41.48,
+        "OCT": 51.76,
+        "NOV": 64.62,
+        "DEC": 67.97,
+        "ANN": 50.66
+      },
+      "PRECTOTCORR": {
+        "JAN": 4.03,
+        "FEB": 3.89,
+        "MAR": 3.09,
+        "APR": 1.84,
+        "MAY": 1.36,
+        "JUN": 0.91,
+        "JUL": 0.52,
+        "AUG": 0.82,
+        "SEP": 2.69,
+        "OCT": 3.72,
+        "NOV": 5.02,
+        "DEC": 5,
+        "ANN": 2.73
+      },
+      "T2M": {
+        "JAN": 10.99,
+        "FEB": 11.19,
+        "MAR": 13.04,
+        "APR": 15.59,
+        "MAY": 19.41,
+        "JUN": 23.49,
+        "JUL": 26.14,
+        "AUG": 26.78,
+        "SEP": 23.65,
+        "OCT": 20.03,
+        "NOV": 16.4,
+        "DEC": 12.59,
+        "ANN": 18.31
+      }
+    }
+  },
+  "header": {
+    "title": "NASA/POWER Source Native Resolution Climatology Climatologies",
+    "api": {
+      "version": "v2.10.0",
+      "name": "POWER Climatology API"
+    },
+    "sources": [
+      "SYN1DEG",
+      "MERRA2"
+    ],
+    "fill_value": -999,
+    "time_standard": "LST",
+    "range": "20-year Meteorological and Solar Monthly & Annual Climatologies (January 2001 - December 2020)"
+  },
+  "messages": [
+    "The requested parameters are retrieved from a pre-computed climatological period (January 2001 - December 2020)"
+  ],
+  "parameters": {
+    "CLOUD_AMT": {
+      "units": "%",
+      "longname": "Cloud Amount"
+    },
+    "PRECTOTCORR": {
+      "units": "mm/day",
+      "longname": "Precipitation Corrected"
+    },
+    "T2M": {
+      "units": "C",
+      "longname": "Temperature at 2 Meters"
+    }
+  },
+  "times": {
+    "data": 0.091,
+    "process": 0.03
+  }
+}

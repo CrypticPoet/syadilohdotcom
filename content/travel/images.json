@@ -1,0 +1,142 @@
+{
+  "rome": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Rome_Skyline_%288012016319%29.jpg/1920px-Rome_Skyline_%288012016319%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Rome: Rome Skyline (8012016319)",
+    "credit": "Bert Kaufmann from Roermond, Netherlands",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Rome_Skyline_(8012016319).jpg",
+    "licence": "CC BY-SA 2.0"
+  },
+  "florence": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Panoramica_Firenze.jpg/1920px-Panoramica_Firenze.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Florence: Panoramica Firenze",
+    "credit": "Wikibusters",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Panoramica_Firenze.jpg",
+    "licence": "CC BY-SA 4.0"
+  },
+  "venice": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Floating_city.tif/lossy-page1-1920px-Floating_city.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Venice: Floating city",
+    "credit": "European Space Agency",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Floating_city.tif",
+    "licence": "CC BY-SA 3.0 igo"
+  },
+  "paris": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1920px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Paris: La Tour Eiffel vue de la Tour Saint-Jacques, Paris août 2014 (2)",
+    "credit": "Yann Caradec from Paris, France",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques,_Paris_ao%C3%BBt_2014_(2).jpg",
+    "licence": "CC BY-SA 2.0"
+  },
+  "nice": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Port_Of_Nice%2C_C%C3%B4te_d%27Azur.jpg/1920px-Port_Of_Nice%2C_C%C3%B4te_d%27Azur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Nice: Port Of Nice, Côte d'Azur",
+    "credit": "Moody Dreiza (Moody751 at English Wikipedia)",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Port_Of_Nice,_C%C3%B4te_d%27Azur.jpg",
+    "licence": "CC BY 2.5"
+  },
+  "lyon": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/01._Panorama_de_Lyon_pris_depuis_le_toit_de_la_Basilique_de_Fourvi%C3%A8re.jpg/1920px-01._Panorama_de_Lyon_pris_depuis_le_toit_de_la_Basilique_de_Fourvi%C3%A8re.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Lyon: 01. Panorama de Lyon pris depuis le toit de la Basilique de Fourvière",
+    "credit": "Otourly",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:01._Panorama_de_Lyon_pris_depuis_le_toit_de_la_Basilique_de_Fourvi%C3%A8re.jpg",
+    "licence": "CC BY-SA 3.0"
+  },
+  "barcelona": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Aerial_view_of_La_Sagrada_Familia%2C_Barcelona%2C_Spain_%2851227006134%29.jpg/1920px-Aerial_view_of_La_Sagrada_Familia%2C_Barcelona%2C_Spain_%2851227006134%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Barcelona: Aerial view of La Sagrada Familia, Barcelona, Spain (51227006134)",
+    "credit": "dronepicr",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_La_Sagrada_Familia,_Barcelona,_Spain_(51227006134).jpg",
+    "licence": "CC BY 2.0"
+  },
+  "seville": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Sevilla_Luft_120308.JPG/1920px-Sevilla_Luft_120308.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Seville: Sevilla Luft 120308",
+    "credit": "El-mejor",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Sevilla_Luft_120308.JPG",
+    "licence": "CC BY-SA 3.0"
+  },
+  "mallorca": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Imagen_satelital_de_Mallorca_%28Islas_Baleares%2C_Espa%C3%B1a%29.jpg/1920px-Imagen_satelital_de_Mallorca_%28Islas_Baleares%2C_Espa%C3%B1a%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Mallorca: Imagen satelital de Mallorca (Islas Baleares, España)",
+    "credit": "Pierre Markuse from Hamm, Germany",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Imagen_satelital_de_Mallorca_(Islas_Baleares,_Espa%C3%B1a).jpg",
+    "licence": "CC BY 2.0"
+  },
+  "lisbon": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Lisboa837.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "alt": "Lisbon: Lisboa837",
+    "credit": "Lacobrigo",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Lisboa837.png",
+    "licence": "CC BY-SA 4.0"
+  },
+  "porto": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/O_Porto_%28visto_da_Ponte_Dom_Luis_I%29.jpg/1920px-O_Porto_%28visto_da_Ponte_Dom_Luis_I%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Porto: O Porto (visto da Ponte Dom Luis I)",
+    "credit": "Rititaneves",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:O_Porto_(visto_da_Ponte_Dom_Luis_I).jpg",
+    "licence": "CC BY-SA 3.0"
+  },
+  "algarve": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Praia_da_Dona_Ana_cliffs.jpg/1920px-Praia_da_Dona_Ana_cliffs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Algarve: Praia da Dona Ana cliffs",
+    "credit": "Steven Fruitsmaak",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Praia_da_Dona_Ana_cliffs.jpg",
+    "licence": "CC BY-SA 3.0"
+  },
+  "athens": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Akropolis_2015.jpg/1920px-Akropolis_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Athens: Akropolis 2015",
+    "credit": "Thomas Wolf, www.foto-tw.de",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Akropolis_2015.jpg",
+    "licence": "CC BY-SA 3.0 de"
+  },
+  "crete": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Crete_Nasa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "alt": "Crete: Crete Nasa",
+    "credit": "Wikimedia Commons contributors",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Crete_Nasa.jpg",
+    "licence": "Public domain"
+  },
+  "corfu": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/The_Old_Fortress_and_the_Old_Town_of_Corfu_-_September_2017.jpg/1920px-The_Old_Fortress_and_the_Old_Town_of_Corfu_-_September_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Corfu: The Old Fortress and the Old Town of Corfu - September 2017",
+    "credit": "Martin Falbisoner",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:The_Old_Fortress_and_the_Old_Town_of_Corfu_-_September_2017.jpg",
+    "licence": "CC BY-SA 4.0"
+  },
+  "spain": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Aerial_view_of_La_Sagrada_Familia%2C_Barcelona%2C_Spain_%2851227006134%29.jpg/1920px-Aerial_view_of_La_Sagrada_Familia%2C_Barcelona%2C_Spain_%2851227006134%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Barcelona: Aerial view of La Sagrada Familia, Barcelona, Spain (51227006134)",
+    "credit": "dronepicr",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_La_Sagrada_Familia,_Barcelona,_Spain_(51227006134).jpg",
+    "licence": "CC BY 2.0"
+  },
+  "france": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1920px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Paris: La Tour Eiffel vue de la Tour Saint-Jacques, Paris août 2014 (2)",
+    "credit": "Yann Caradec from Paris, France",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques,_Paris_ao%C3%BBt_2014_(2).jpg",
+    "licence": "CC BY-SA 2.0"
+  },
+  "italy": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Rome_Skyline_%288012016319%29.jpg/1920px-Rome_Skyline_%288012016319%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Rome: Rome Skyline (8012016319)",
+    "credit": "Bert Kaufmann from Roermond, Netherlands",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Rome_Skyline_(8012016319).jpg",
+    "licence": "CC BY-SA 2.0"
+  },
+  "portugal": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Lisboa837.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "alt": "Lisbon: Lisboa837",
+    "credit": "Lacobrigo",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Lisboa837.png",
+    "licence": "CC BY-SA 4.0"
+  },
+  "greece": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Akropolis_2015.jpg/1920px-Akropolis_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "alt": "Athens: Akropolis 2015",
+    "credit": "Thomas Wolf, www.foto-tw.de",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Akropolis_2015.jpg",
+    "licence": "CC BY-SA 3.0 de"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q29": {
+      "id": "Q29",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Spain"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "6814d35edf26b026844ebbff7dd02a18d608dd6e",
+              "datavalue": {
+                "value": {
+                  "latitude": 40.2,
+                  "longitude": -3.5,
+                  "altitude": null,
+                  "precision": 0.1,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q29$a68a14cf-4c76-c9bb-ee53-717b253b6277",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "7a81dd28f62e878e8113d8c147a62252f419b78f",
+              "datavalue": {
+                "value": "2510769",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q29$5EE6DDF6-D77C-40A5-B8CB-757F64BF1AD6",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

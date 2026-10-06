@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Paperclip, Mic, Send } from "lucide-react";
+import ChatStarter from "@/components/chat/ChatStarter";
 import { PROMPTS } from "@/lib/data";
 import AnimatedJourney from "./AnimatedJourney";
 
@@ -13,8 +13,6 @@ export default function Hero({ onStartChat }: HeroProps) {
   const [promptIndex, setPromptIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
-  const [inputValue, setInputValue] = useState("");
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -42,21 +40,6 @@ export default function Hero({ onStartChat }: HeroProps) {
 
     return () => clearTimeout(timeout);
   }, [displayText, isTyping, promptIndex]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const query = inputValue.trim();
-    if (!query) return;
-    onStartChat(query);
-  };
-
-  const handleQuickButtonClick = (text: string) => {
-    // Only fills the textarea, does NOT automatically submit
-    setInputValue(text);
-    if (textareaRef.current) {
-      textareaRef.current.focus();
-    }
-  };
 
   return (
     <section className="relative pt-32 pb-14 md:pt-48 md:pb-24 px-6 md:px-8 w-full min-h-[100svh] flex flex-col justify-center overflow-hidden">
@@ -88,82 +71,10 @@ export default function Hero({ onStartChat }: HeroProps) {
             Smartest AI trip planner and bespoke travel agents, a message away.
           </motion.p>
 
-          {/* Chat Input Area */}
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="relative bg-white p-4 rounded-[2rem] shadow-[0_20px_50px_rgb(0,0,0,0.1)] flex flex-col border border-gray-100 mt-2 max-w-2xl w-full"
-          >
-            <div className="relative flex flex-col items-start min-h-[120px]">
-              <textarea
-                ref={textareaRef}
-                className="w-full h-full min-h-[100px] bg-transparent resize-none outline-none text-lg text-[var(--vintage-grape)] p-2 z-10 placeholder-transparent"
-                placeholder="Type your dream trip here..."
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSubmit(e);
-                  }
-                }}
-              />
-              {inputValue.length === 0 && (
-                <div className="absolute top-2 left-2 text-gray-500 text-lg pointer-events-none">
-                  {displayText}
-                  <span className="animate-pulse">|</span>
-                </div>
-              )}
-            </div>
-
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-2 pt-4 border-t border-gray-100 gap-4">
-              {/* Quick buttons — Only fill input, do NOT auto-start chat */}
-              <div className="flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleQuickButtonClick("Surprise me with a weekend getaway")}
-                  className="text-sm font-semibold bg-[var(--salmon)]/15 text-[var(--salmon)] px-4 py-2 rounded-full hover:bg-[var(--salmon)]/25 transition-colors cursor-pointer"
-                >
-                  Surprise me 🎲
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickButtonClick("Plan a relaxing beach holiday")}
-                  className="text-sm font-semibold bg-[var(--soft-periwinkle)]/15 text-[var(--soft-periwinkle)] px-4 py-2 rounded-full hover:bg-[var(--soft-periwinkle)]/25 transition-colors cursor-pointer"
-                >
-                  Beach holiday 🏖️
-                </button>
-              </div>
-
-              <div className="flex items-center gap-1 self-end sm:self-auto shrink-0">
-                <button
-                  type="button"
-                  className="p-2 text-gray-400 hover:text-[var(--coral-glow)] transition-colors rounded-full hover:bg-gray-50 cursor-pointer"
-                >
-                  <Paperclip size={20} />
-                </button>
-                <button
-                  type="button"
-                  className="p-2 text-gray-400 hover:text-[var(--coral-glow)] transition-colors rounded-full hover:bg-gray-50 cursor-pointer"
-                >
-                  <Mic size={20} />
-                </button>
-                <button
-                  type="submit"
-                  aria-label="Send message"
-                  className={`bg-gradient-to-r from-[var(--coral-glow)] to-[var(--salmon)] text-white p-3 rounded-full shadow-md ml-2 transition-all ${
-                    inputValue.trim()
-                      ? "hover:scale-105 active:scale-95 cursor-pointer opacity-100"
-                      : "opacity-50 cursor-default"
-                  }`}
-                >
-                  <Send size={18} />
-                </button>
-              </div>
-            </div>
-          </motion.form>
+          <ChatStarter onStartChat={onStartChat} placeholder={displayText} showCursor showExtras suggestions={[
+            { label: "Surprise me 🎲", prompt: "Surprise me with a weekend getaway" },
+            { label: "Beach holiday 🏖️", prompt: "Plan a relaxing beach holiday" },
+          ]} />
         </div>
 
         {/* Right Column - Animated Flow */}

@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q597": {
+      "id": "Q597",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Lisbon"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "31d254c9d0f51258c82604fa427952c192972ab7",
+              "datavalue": {
+                "value": {
+                  "latitude": 38.708042,
+                  "longitude": -9.139016,
+                  "altitude": null,
+                  "precision": 0.000001,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q597$3896D5F4-CE2F-4909-AF91-E55611072B59",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "db731d52240383aae0448c1ea91bc3fa2ceaa4f4",
+              "datavalue": {
+                "value": "2267057",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q597$041D1FC0-4C20-4D60-895E-43657FD25B5C",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,7 +1,11 @@
 "use client";
-import { MapPin, PlaneTakeoff } from "lucide-react";
+import { Suspense } from "react";
+import Link from "next/link";
+import { PlaneTakeoff } from "lucide-react";
 
-export default function Footer() {
+function CopyrightYear() { return new Date().getFullYear(); }
+
+export default function Footer({ onStartPlanning }: { onStartPlanning?: () => void }) {
   return (
     <footer className="bg-gradient-to-br from-[#2D2A3D] to-[var(--vintage-grape)] text-white pt-24 pb-12 rounded-t-[3rem] mt-16 flex flex-col justify-between">
       <div className="max-w-7xl mx-auto px-4 md:px-8 w-full flex-1 flex flex-col justify-center">
@@ -22,7 +26,7 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-6">Company</h4>
             <ul className="space-y-4 text-white/70">
               <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Plan your Trip</a></li>
+              <li>{onStartPlanning ? <button type="button" onClick={onStartPlanning} className="hover:text-white transition-colors">Plan your Trip</button> : <a href="#request-itinerary" className="hover:text-white transition-colors">Plan your Trip</a>}</li>
               <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
               <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
@@ -41,17 +45,17 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-lg mb-6">Top Destinations</h4>
             <ul className="space-y-4 text-white/70">
-              <li><a href="#" className="hover:text-white transition-colors">Paris, France</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Kyoto, Japan</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Bali, Indonesia</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">New York, USA</a></li>
+              <li><Link href="/holidays/france/paris" className="hover:text-white transition-colors">Paris, France</Link></li>
+              <li><Link href="/holidays/italy/rome" className="hover:text-white transition-colors">Rome, Italy</Link></li>
+              <li><Link href="/holidays/portugal/lisbon" className="hover:text-white transition-colors">Lisbon, Portugal</Link></li>
+              <li><Link href="/holidays/greece/crete" className="hover:text-white transition-colors">Crete, Greece</Link></li>
             </ul>
           </div>
         </div>
       </div>
         
       <div className="max-w-7xl mx-auto px-4 md:px-8 w-full pt-8 border-t border-white/10 text-center text-white/50 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>&copy; {new Date().getFullYear()} syadiloh. All rights reserved.</p>
+        <p>&copy; <Suspense fallback="2026"><CopyrightYear /></Suspense> syadiloh. All rights reserved.</p>
         <p className="flex items-center gap-2">Made with <PlaneTakeoff size={16} /> for modern travelers.</p>
       </div>
     </footer>

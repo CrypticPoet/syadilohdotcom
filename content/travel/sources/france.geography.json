@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Q142": {
+      "id": "Q142",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "France"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "159f2dd3fca9069e2693b5aef8abf21aa6ba5392",
+              "datavalue": {
+                "value": {
+                  "latitude": 47,
+                  "longitude": 2,
+                  "altitude": null,
+                  "precision": 1,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q142$f9af5b12-4e4d-44cc-bd22-b13f6ea2bf22",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "cfabd5468d2c75b795dfbc814dee30c567928540",
+              "datavalue": {
+                "value": "3017382",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q142$DF0C84C3-6D5F-43C4-BC24-0420E6B2D708",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}

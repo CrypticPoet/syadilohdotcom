@@ -1,0 +1,15 @@
+import { ArrowDown, Compass } from "lucide-react";
+import Link from "next/link";
+import { getPageSummaries, getPageCount } from "@/lib/travel/repository";
+import TravelNavigation from "@/components/travel/TravelNavigation";
+import TravelCard from "@/components/travel/TravelCard";
+import Footer from "@/components/common/Footer";
+import HolidayChat from "@/components/travel/HolidayChat";
+
+import { notFound } from "next/navigation";
+export default async function HolidayDirectory({ pageNumber = 1 }: { pageNumber?: number }) {
+  const [countries, destinations, count] = await Promise.all([getPageSummaries(100, 0, "country"), getPageSummaries(24, (pageNumber - 1) * 24, "destination"), getPageCount("destination")]);
+  const total = Math.max(1, Math.ceil(count / 24));
+  if (pageNumber > total) notFound();
+  return <><div className="relative overflow-hidden"><TravelNavigation /><header className="mx-auto max-w-7xl px-5 pb-12 pt-36 text-center md:px-8 md:pb-16 md:pt-44"><span className="inline-flex items-center gap-2 rounded-full bg-periwinkle/20 px-4 py-2 text-xs font-bold uppercase tracking-widest"><Compass size={15} />A world of possibilities</span><h1 className="mx-auto mt-6 max-w-4xl font-heading text-5xl font-semibold leading-tight tracking-tight md:text-7xl">Your next chapter.<br /><span className="text-coral">Somewhere wonderful.</span></h1><p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-grape/70">A little inspiration, practical details and room to dream. Find a place that feels like you, then let’s shape the journey together.</p><a href="#destinations" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold shadow-sm">Find your somewhere<ArrowDown size={16} /></a></header><main className="mx-auto max-w-7xl px-5 md:px-8"><nav aria-label="Explore countries" className="mb-12 flex flex-wrap justify-center gap-3">{countries.map(c => <Link key={c.path} href={c.path} className="rounded-full border border-grape/10 bg-white px-6 py-3 font-semibold transition hover:border-periwinkle hover:bg-periwinkle/10">{c.name}</Link>)}</nav><section id="destinations" className="scroll-mt-8"><div className="mb-8"><p className="text-xs font-bold uppercase tracking-widest text-grape/50">Thoughtful guides for curious travellers</p><h2 className="mt-2 font-heading text-3xl font-semibold md:text-4xl">Where will your story go?</h2></div><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{destinations.map(d => <TravelCard key={d.path} page={d} />)}</div>{total > 1 ? <nav aria-label="Destination pages" className="mt-8 flex items-center justify-center gap-6">{pageNumber > 1 ? <Link href={pageNumber === 2 ? "/holidays" : `/holidays/browse/${pageNumber - 1}`} className="underline underline-offset-4">Previous destinations</Link> : null}<span className="text-sm">Page {pageNumber} of {total}</span>{pageNumber < total ? <Link href={`/holidays/browse/${pageNumber + 1}`} className="underline underline-offset-4">More destinations</Link> : null}</nav> : null}</section><div className="py-16"><HolidayChat sourcePath="/holidays" /></div></main></div><Footer /></>;
+}

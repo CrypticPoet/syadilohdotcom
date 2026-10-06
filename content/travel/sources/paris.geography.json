@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "Q90": {
+      "id": "Q90",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Paris"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "f518387def77174a3030b48649aed25848a051ba",
+              "datavalue": {
+                "value": {
+                  "latitude": 48.85666666666667,
+                  "longitude": 2.352222222222222,
+                  "altitude": null,
+                  "precision": 0.0002777777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q90$CC8612EE-CB95-4E57-9AA0-2AFA95A214E6",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "72bd649cff6312781343b6d77df48cd08779d709",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "f747cc5a0b0d9b332032ebdd0bc6d90838ea13f8",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 20894925,
+                          "id": "Q20894925"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "ff3b4928f50df025966fab92e3ab5fa610286590",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-10-26T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "642311f8cfa34290867a84f673cbe79412bafdb4",
+              "datavalue": {
+                "value": "2968815",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q90$291A292C-A243-4A5F-AD76-AC0FC34277E1",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "49928ae737f698532145711d30031d6776768fbb",
+              "datavalue": {
+                "value": "2988507",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q90$397cbca2-43a5-51e2-8137-9fe4a91b9c0c",
+            "rank": "normal"
+          }
+        ]
+      }
+    }
+  }
+}
