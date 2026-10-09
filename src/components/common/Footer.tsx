@@ -13,7 +13,7 @@ export default function Footer({ onStartPlanning }: { onStartPlanning?: () => vo
           <div className="lg:col-span-2">
             <h3 className="text-3xl font-heading font-bold text-[var(--coral-glow)] mb-6">syadiloh</h3>
             <p className="text-white/70 max-w-sm mb-8 leading-relaxed">
-              The smartest AI trip planner paired with elite human concierges. Give shape to the trip of your dreams.
+              A smart trip planner paired with expert travel concierges. Give shape to the trip of your dreams.
             </p>
             <div className="flex gap-4">
               <a href="#" className="bg-white/10 p-3 rounded-full hover:bg-[var(--coral-glow)] transition-colors"><span className="text-sm font-semibold">IG</span></a>

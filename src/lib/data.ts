@@ -11,8 +11,8 @@ export const FEATURES = [
     id: 1,
     image:
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop",
-    bubbleText: "AI found the best multi-city flight routes in seconds.",
-    bubbleIcon: "ai",
+    bubbleText: "Smart planning brings your multi-city trip together.",
+    bubbleIcon: "planner",
   },
   {
     id: 2,
@@ -497,13 +497,13 @@ export const REVIEWS = [
     id: 1,
     name: "Sarah J.",
     role: "Honeymooner",
-    text: "syadiloh is magic. The AI built our itinerary in seconds, but what truly blew me away was our concierge booking us a last-minute VIP table in Rome.",
+    text: "syadiloh is magic. The smart trip planner helped shape our itinerary, but what truly blew me away was our concierge booking us a last-minute VIP table in Rome.",
   },
   {
     id: 2,
     name: "David M.",
     role: "Business Executive",
-    text: "I travel 3 weeks a month. The speed of the AI and the luxury of having a real human agent sort out my cab delays is unparalleled.",
+    text: "I travel 3 weeks a month. The ease of the smart trip planner and the luxury of having a dedicated travel agent sort out my cab delays is unparalleled.",
   },
   {
     id: 3,
@@ -515,34 +515,34 @@ export const REVIEWS = [
     id: 4,
     name: "James K.",
     role: "Solo Adventurer",
-    text: "I love the flexibility. The AI gave me a phenomenal hiking route in Patagonia, and the human backup gave me total peace of mind in remote areas.",
+    text: "I love the flexibility. The smart trip planner helped me explore a phenomenal hiking route in Patagonia, and the concierge support gave me total peace of mind in remote areas.",
   },
 ];
 
 export const FAQS = [
   {
-    q: "How does the AI trip planner work?",
-    a: "Our AI processes your prompt, analyzing millions of data points to generate a completely bespoke itinerary—including optimal flight routes, curated hotels, and daily activities—within seconds.",
+    q: "How does the smart trip planner work?",
+    a: "Describe your trip in natural language, just as you would to a friend. Our smart concierge helps you explore ideas and collects your destination, dates, budget and preferences. Review and submit your itinerary request, then our travel agents reach out to help refine the details.",
   },
   {
     q: "What does the human concierge actually do?",
-    a: "While the AI builds the foundation, your dedicated human concierge handles the nuances. They can secure hard-to-get reservations, rebook delayed flights in real-time, and act as your 24/7 lifeline.",
+    a: "Our travel agents follow up on your itinerary request, help refine your route and discuss accommodation, transport and experiences around your preferences. They confirm availability and booking details with you before any arrangements are made.",
   },
   {
-    q: "Is the AI itinerary flexible?",
-    a: "Absolutely. You can chat with the AI to tweak the itinerary as much as you want before finalizing, or ask your human concierge to make adjustments during the trip.",
+    q: "Is my itinerary flexible?",
+    a: "Absolutely. Tell the smart concierge what you would like to change, from destinations and activities to your budget and pace. You can refine your request in the chat and discuss further adjustments with our travel agents when they follow up.",
   },
   {
     q: "How much does syadiloh cost?",
-    a: "The AI planning tool is entirely free to use. To unlock our premium 24/7 human concierge service for your booked trip, there is a flat bespoke travel fee based on trip length.",
+    a: "Our smart trip planner is free to use. Any travel costs and applicable planning or concierge fees are discussed with you by our agents before you commit to a booking.",
   },
   {
     q: "Can I save money using syadiloh?",
-    a: "Yes! Our AI continuously scans for the best flight and hotel deals across the web, ensuring you get luxury experiences at the most competitive rates.",
+    a: "Share your budget and the experiences that matter most to you. Our travel agents can help you compare options and tradeoffs when they follow up. Prices and availability are confirmed during that discussion; the planner does not show live fares or hotel rates.",
   },
   {
     q: "Can Syadiloh help plan multi-city trips?",
-    a: "Absolutely. Multi-city trips are our specialty. The AI seamlessly calculates the most efficient travel routes and connections between multiple destinations.",
+    a: "Absolutely. Describe the places you want to visit and how much time you have. The smart trip planner helps shape a route with a comfortable pace, and our agents can review transport connections and practical details with you.",
   },
   {
     q: "Is syadiloh good for family or couple travel?",
@@ -550,6 +550,6 @@ export const FAQS = [
   },
   {
     q: "How can I customize my trip?",
-    a: "You can customize your trip by simply typing your requests into the chat. Our AI will instantly adjust your itinerary, and our human agents can finalize any complex bespoke requests.",
+    a: "Simply type your requests into the chat in your own words. The smart concierge helps refine your trip ideas and preferences, and our travel agents follow up to work through the details of your personalised itinerary.",
   },
 ];

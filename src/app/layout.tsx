@@ -13,8 +13,8 @@ const fredoka = Fredoka({
 });
 
 export const metadata: Metadata = {
-  title: "syadiloh | AI-powered trip planner",
-  description: "Smartest AI trip planner and bespoke travel agents.",
+  title: "syadiloh | Smart trip planner & travel concierge",
+  description: "Describe your dream trip in your own words. Our smart trip planner and bespoke travel agents help shape a personalised itinerary around you.",
 };
 
 export default function RootLayout({

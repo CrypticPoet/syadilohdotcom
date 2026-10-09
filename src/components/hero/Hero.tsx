@@ -68,7 +68,7 @@ export default function Hero({ onStartChat }: HeroProps) {
             transition={{ delay: 0.1 }}
             className="text-lg md:text-xl text-[var(--vintage-grape)]/80 max-w-xl font-medium"
           >
-            Smartest AI trip planner and bespoke travel agents, a message away.
+            Your smart trip planner and bespoke travel agents, a message away.
           </motion.p>
 
           <ChatStarter onStartChat={onStartChat} placeholder={displayText} showCursor showExtras suggestions={[

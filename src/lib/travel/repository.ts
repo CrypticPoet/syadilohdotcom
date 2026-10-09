@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { travelSql } from "./database";
 import { pageSchema, type PageSummary, type PublishedPage } from "./types";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://syadiloh.com").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.syadiloh.co.uk").replace(/\/$/, "");
 const mode = () => process.env.TRAVEL_DATA_MODE || (process.env.DATABASE_URL ? "database" : "snapshot");
 let snapshot: Promise<Map<string, PublishedPage>> | undefined;
 async function snapshotPages() {

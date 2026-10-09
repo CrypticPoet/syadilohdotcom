@@ -53,7 +53,7 @@ function cleanMessageText(text: string): string {
   return text.replace(/\[SUGGESTIONS:[\s\S]*?(\]|$)/gi, "").trim();
 }
 
-// Formatter for AI responses supporting bold (**text**) and bullet points (- item)
+// Formatter for concierge responses supporting bold (**text**) and bullet points (- item)
 function FormattedText({ text }: { text: string }) {
   const cleaned = cleanMessageText(text);
   const lines = cleaned.split("\n");

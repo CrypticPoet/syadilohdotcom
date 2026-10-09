@@ -24,7 +24,7 @@ export default function AnimatedJourney() {
     {
       id: 1,
       icon: <Sparkles size={18} className="text-[var(--soft-periwinkle)]" />,
-      title: "AI agent prepares itinerary.",
+      title: "Smart concierge shapes your itinerary.",
       bg: "bg-[var(--soft-periwinkle)]/10",
     },
     {

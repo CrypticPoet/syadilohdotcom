@@ -1,5 +1,5 @@
 "use client";
-import { Bot, Star, MapPin, UserCheck } from "lucide-react";
+import { Compass, Star, UserCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { FEATURES, MARQUEE_ITEMS } from "@/lib/data";
 
@@ -13,7 +13,7 @@ export default function Features() {
       {/* Title */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mt-12 w-full z-10">
         <h2 className="text-3xl md:text-5xl font-heading font-bold text-[var(--vintage-grape)]">
-          Crafted by AI, Tailored by our Expert agents
+          Crafted with Intelligence, tailored by our expert agents
         </h2>
       </div>
 
@@ -38,7 +38,7 @@ export default function Features() {
               className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl flex gap-3 items-center"
             >
               <div className="bg-[var(--coral-glow)]/10 p-2 rounded-full text-[var(--coral-glow)] shrink-0">
-                {feature.bubbleIcon === "ai" && <Bot size={20} />}
+                {feature.bubbleIcon === "planner" && <Compass size={20} />}
                 {feature.bubbleIcon === "concierge" && <UserCheck size={20} />}
                 {feature.bubbleIcon === "star" && <Star size={20} />}
               </div>
